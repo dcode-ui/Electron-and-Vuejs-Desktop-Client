@@ -1,23 +1,25 @@
 <template>
     <div id="main_dash">
         <div id="left_con">
-            <p>{{say}}</p>
-
+            <Navbar></Navbar>
         </div>
         <div id="middle_con">
             <p>{{say}}</p>
 
         </div>
         <div id="right_con">
-            <p>{{say}}</p>
+            <Qpanel></Qpanel>
 
         </div>
     </div>
 </template>
 
 <script>
+import Navbar from './Navbar'
+import Qpanel from './Qpanel'
 export default {
     name:"Dasboard",
+    components:{Navbar,Qpanel},
     data(){
         return {
             say:'hello'
@@ -31,12 +33,11 @@ export default {
 {
     position: absolute;
     display: grid;
-    grid-template-columns: 10% 60% 30%;
+    grid-template-columns: 250px auto 30%;
     width: 100vw;
     height: 100vh;
     top: 0px;
     left: 0px;
-    background-color: red;
 }
 
 #left_con
@@ -46,14 +47,10 @@ export default {
 
 #middle_con
 {
-    background-color: pink;
 }
 
 #right_con
 {
-    background-color: yellow;
-    display: flex;
-    justify-content: center;
 }
 
 

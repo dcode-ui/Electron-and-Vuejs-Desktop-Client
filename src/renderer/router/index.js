@@ -7,11 +7,23 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'landing-page',
-      component: require('@/components/Dashboard.vue').default
+      name: 'dashboard',
+      component: require('@/components/Dashboard').default
     },
     {
-      path: '*',
+      path: '/farmers',
+      name:'farmers',
+      redirect: '/'
+    },
+    {
+      path: '/farms',
+      name:'/farms',
+      redirect: '/'
+    },
+    {
+      path: 'cropyields',
+      name:'/cropyields',
+      component: require('@/components/Dashboard').default,
       redirect: '/'
     }
   ]

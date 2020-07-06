@@ -25,7 +25,7 @@ function createWindow () {
     height: 1100,
     autoHideMenuBar:true,
     useContentSize: true,
-    width: 1700
+    width: 1800
   })
 
   mainWindow.loadURL(winURL)

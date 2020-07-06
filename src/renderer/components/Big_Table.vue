@@ -1,10 +1,15 @@
 <template>
     <div id="dash_table">
-        <div id="table_title">
-            <div id="t_title">
-                <p>{{title}}</p>
+        <div id="manipu_data">
+            <div id="m_con">
+                <div>
+                    <button>Sort</button>
+                    <button>Export</button>
+                </div>
             </div>
-            <router-link :to="route_to">></router-link>
+            <div id="search">
+                <input type="text" id="searchbox" name="search" placeholder="Type here to search"/>
+            </div>
         </div>
         <div id="t_con">
             <div id="theading">
@@ -14,11 +19,13 @@
                 <span id="spacer"></span>
             </div>
             <div id="tbody">
-                <div id="t_row" v-for="(row, index) in tdata" :key="index">
-                    <div id="t_column" v-for="(column, cindex) in row" :key="cindex">
-                        <p>{{column}}</p>
+                <div id="tbody_con">
+                    <div id="t_row" v-for="(row, index) in tdata" :key="index">
+                        <div id="t_column" v-for="(column, cindex) in row" :key="cindex">
+                            <p>{{column}}</p>
+                        </div>
+                        <span id="spacer"></span>
                     </div>
-                    <span id="spacer"></span>
                 </div>
 
             </div>
@@ -29,85 +36,57 @@
 
 <script>
 export default {
-    name:'DashTable',
+    name:'Big_Table',
     props:{
-        title:{
-            type:String,
-            required:true
-            },
         headers:{
             type:Array,
-            required:true
-        },
-        route_to:{
-            type:String,
             required:true
         },
         tdata:{
             type:Array,
             required:true
         }
-        },
+    },
     data(){
         return{
-
+            
         }
+    
     }
 }
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
-
 #dash_table
 {
     position: relative;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0px 10px 63px -25px rgba(212, 212, 212, 0.8);
     display: flex;
     align-items: center;
     flex-direction: column;
-    height: 550px;
 }
 
-#dash_table > #table_title
+#dash_table  > #manipu_data
 {
     position: relative;
     display: flex;
     flex-direction: row;
-    align-items: center;
+    height: 80px;
+    width: 100%;
+    background-color: white;
     justify-content: space-between;
-    width: 90%;
-    top: 20px;
-}
-
-#dash_table > #table_title > #t_title > p
-{
-    font-size: 28px;
-    font-family: 'Lato',sans-serif;
-    font-weight: 700;
-    margin-top: 5px;
-    margin-bottom:5px;
-}
-
-#dash_table > #table_title > a
-{
-    display: flex;
-    justify-content: center;
     align-items: center;
-    color: #ffffff;
-    text-decoration: none;
-    background-color: rgb(122,181,69);
-    width: 45px;
-    height: 30px;
-    border-radius: 5px;
+    box-shadow: 0px 10px 63px -25px rgba(212, 212, 212, 0.8);
+    border-radius: 15px;
+    
 }
 
 #dash_table > #t_con
 {
-    width: 85%;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
 }
+
 #dash_table > #t_con > #theading
 {
     display: flex;
@@ -130,16 +109,11 @@ export default {
     margin-bottom: 10px;
 }
 
-#dash_table > #t_con > #theading > #spacer
-{
-    width: 2%;
-}
-
 #dash_table > #t_con > #tbody
 {
     display: flex;
     flex-direction: column;
-    height: 400px;
+    height: 600px;
     overflow-y: scroll;
 }
 
@@ -157,7 +131,7 @@ export default {
     border-radius: 5px;
 }
 
-#dash_table > #t_con > #tbody > #t_row
+#dash_table > #t_con > #tbody > #tbody_con > #t_row
 {
     display: flex;
     flex-direction: row;
@@ -167,14 +141,16 @@ export default {
 
 }
 
-#dash_table > #t_con > #tbody > #t_row:hover
+#dash_table > #t_con > #tbody > #tbody_con > #t_row:hover
 {
+    background-color: #ffffff;
+    border-radius: 50px;
     box-shadow: 0px 10px 63px -25px rgb(161, 161, 161);
     transition: 0.2s ease-in;
 
 }
 
-#dash_table > #t_con > #tbody > #t_row > #t_column
+#dash_table > #t_con > #tbody > #tbody_con > #t_row > #t_column
 {
     position: relative;
     height: 100%;
@@ -182,17 +158,11 @@ export default {
     display: flex;
     align-items: center;
 }
-
-#dash_table > #t_con > #tbody > #t_row > #t_column > p
+#dash_table > #t_con > #tbody > #tbody_con > #t_row > #t_column > p
 {
     font-size: 17px;
     font-weight: lighter;
     font-family: 'Lato', sans-serif;
     margin: 0px;
-}
-
-#dash_table > #t_con > #tbody > #t_row > #spacer
-{
-    width: 2%;
 }
 </style>

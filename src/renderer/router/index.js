@@ -13,7 +13,7 @@ export default new Router({
     {
       path: '/farmers',
       name:'farmers',
-      redirect: '/'
+      component: require('@/components/Farmers').default,
     },
     {
       path: '/farms',
@@ -21,10 +21,9 @@ export default new Router({
       redirect: '/'
     },
     {
-      path: 'cropyields',
+      path: '/cropyields',
       name:'/cropyields',
-      component: require('@/components/Dashboard').default,
-      redirect: '/'
+      component: require('@/components/Crop_Yield').default,
     }
   ]
 })

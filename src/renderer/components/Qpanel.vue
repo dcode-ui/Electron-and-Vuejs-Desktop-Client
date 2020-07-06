@@ -5,10 +5,10 @@
                 <AddfarmerF></AddfarmerF>
             </Tab>
             <Tab name="Y-Calculator">
-                <p>Yield Calculator will be here</p>
+                <Ycalculator></Ycalculator>
             </Tab>
             <Tab name="Add Farm">
-                <p>add farm form will be here</p>
+                <AddFarmF></AddFarmF>
             </Tab>
         </Tabs>
     </div>
@@ -17,11 +17,18 @@
 import Tabs from './Tabs'
 import Tab from './Tab'
 import AddfarmerF from './AddfarmerF'
+import Ycalculator from './Ycalculator'
+import AddFarmF from './AddfarmF'
 
 
 export default {
     name:'Qpanel',
-    components:{Tabs,Tab,AddfarmerF},
+    components:{
+        Tabs,
+        Tab,
+        AddfarmerF,
+        Ycalculator,
+        AddFarmF},
     data(){
         return{
 

@@ -81,9 +81,26 @@ export default {
     {
         handle_Submit()
         {
+            const _firstname=this.farmer_data.firstname
+            const _lastname=this.farmer_data.lastname
+            const _trn=this.farmer_data.trn
+            const _gender=this.farmer_data.gender
+            const _mobile_num=this.farmer_data.mobile_num
+            const _parish=this.farmer_data.parish
+            const _district=this.farmer_data.district
+            const _databody={
+                firstname:_firstname, 
+                lastname:_lastname,
+                trn:_trn,
+                gender:_gender,
+                mobile_num:_mobile_num,
+                parish:_parish,
+                district:_district
+                }
+            //console.log(_databody)
             fetch('http://localhost:5000/api/add-farmer',{
                 method: 'POST',
-                body: JSON.stringify({firstname:"Nick",lastname:"Brown",trn:837486574,gender:"male",mobile_num:876932892,parish:"St.James",district:"Border"}),
+                body: JSON.stringify(_databody),
                 headers: {
                     'content-type': 'application/json'
                 }

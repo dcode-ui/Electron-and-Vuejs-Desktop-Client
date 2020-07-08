@@ -71,7 +71,7 @@ export default {
 #main_tabcon
 {
     position: relative;
-    top: 110px;
+    top: 60px;
 }
 
 

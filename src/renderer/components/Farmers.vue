@@ -10,7 +10,7 @@
                    <p id="head_descript">Here is a list of the registered farmers across the island.</p>
                </div>
                <div id="table" slot="table">
-                   <Big_Table :headers="farm_table.headers" :tdata="farm_table.data"></Big_Table>
+                   <BigTable :headers="farm_table.headers" :tdata="farm_table.data" :addCrop="false" :searchB="true" ncheck="Farmers"></BigTable>
                </div>
            </MainContent>
 
@@ -26,7 +26,7 @@
 import Navbar from './Navbar'
 import MainContent from './MainContent'
 import Qpanel from './Qpanel'
-import Big_Table from './Big_Table'
+import BigTable from './BigTable'
 
 export default {
     name:"Farmers",
@@ -34,26 +34,28 @@ export default {
         Navbar,
         MainContent,
         Qpanel,
-        Big_Table
+        BigTable
         },
     data(){
         return {
             farm_table:{
-                headers:['Name','Farm','Contact','Parish','District'],
+                headers:['Name','Farm','Contact','Parish','District','Date'],
                 data:[
                     {
                         name:'Ruppert Baxton', 
                         farm:'Rupps Hens',
                         contact:'8763948587',
                         parish:'St.James',
-                        district:'Gordon Village'
+                        district:'Gordon Village',
+                        date:'6-19-20'
                     },
                     {
                         name:'Ruppert Baxton', 
                         farm:'Rupps Hens',
                         contact:'8763948587',
                         parish:'St.James',
-                        district:'Gordon Village'
+                        district:'Gordon Village',
+                        date:'6-19-20'
                     }
                 ]
             }

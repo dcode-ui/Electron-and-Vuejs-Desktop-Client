@@ -1,7 +1,13 @@
 <template>
     <div id="card">
         <div id="control">
-            <div :class="{card_con_farm:light_yellow, card_con_farmer:light_green, card_con_crop:light_purple}">
+            <div :class="{
+                card_con_farm:light_yellow,
+                card_con_farm_:light_yellowa, 
+                card_con_farmer:light_green,
+                card_con_farmer_:light_greena, 
+                card_con_crop:light_purple,
+                card_farm_size:light_red}">
             <img :src="imagesrc" alt="">
             </div>
             <div id="text">
@@ -32,8 +38,11 @@ export default {
     data(){
         return{
             light_green:false,
+            light_greena:false,
             light_yellow:false,
-            light_purple:false
+            light_yellowa:false,
+            light_purple:false,
+            light_red:false,
         }
     },
     mounted()
@@ -41,6 +50,10 @@ export default {
         this.description == 'Registered Farms' ? this.light_yellow = true :this.light_yellow = false
         this.description == 'Registered Farmers' ? this.light_green = true :this.light_green = false
         this.description == 'Crop Types' ? this.light_purple = true :this.light_purple = false
+
+        this.description == 'Farm Name' ? this.light_yellowa = true :this.light_yellowa = false
+        this.description == 'Farm Size' ? this.light_red = true :this.light_red = false
+        this.description == 'Farmer' ? this.light_greena = true :this.light_greena = false
     }
 }
 </script>
@@ -90,12 +103,48 @@ export default {
     align-items: center;
 
 }
+.card_con_farmer_
+{
+    border-radius: 50px;
+    width: 90px;
+    height: 90px;
+    background-color: rgb(236,255,216);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
 .card_con_farm
 {
     border-radius: 50px;
     width: 90px;
     height: 90px;
     background-color: rgb(250,251,233);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card_con_farm_
+{
+    border-radius: 50px;
+    width: 90px;
+    height: 90px;
+    background-color: rgb(250,251,233);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.card_farm_size
+{
+    border-radius: 50px;
+    width: 90px;
+    height: 90px;
+    background-color: rgb(254,212,215);
     display: flex;
     justify-content: center;
     align-items: center;

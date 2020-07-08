@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="9" height="10.5" viewBox="0 0 9 10.5">
+  <g>
+    <path fill="none" stroke="rgb(255,255,255)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M.5 7.53248234V10.00002h8.00002V7.53248234"/>
+    <g>
+      <path fill="none" stroke="rgb(255,255,255)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.50001 7.40910545L4.47778772.5 7.5000175 3.70779896"/>
+      <path fill="none" stroke="rgb(255,255,255)" stroke-dasharray="0 0 0 0" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4.47778772.5L1.5000025 3.70779896"/>
+    </g>
+  </g>
+</svg>

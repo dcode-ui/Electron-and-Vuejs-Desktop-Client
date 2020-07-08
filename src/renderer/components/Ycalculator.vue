@@ -1,32 +1,30 @@
 <template>
     <div>
         <div id="form-control">
-            <form>
+            <form @submit.prevent="handle_Submit">
                 <div id="form-element">
                     <label for="crop">Crop</label>
-                    <select id="form_input_select" class="select" name="crop">
+                    <select id="form_input_select" class="select" name="crop" v-model="yield_data.crop">
+                        <option disabled selected>Please select a crop.</option>
                         <option v-for="(crop,index) in crops" :key="index" :value="crop.value">{{crop.value}}</option>
                     </select>
                 </div>
                 <div id="form-element">
                     <label for="land_size">Land Size</label>
-                    <input type="text" name="Land Size" id="form_input" placeholder="What's the size of the farm?"/>
-                </div>
-                <div id="form-element">
-                    <label for="subdivision">Subdivision</label>
-                    <select id="form_input_select" class="select" name="subdivision">
-                        <option v-for="(subdivision,index) in subdivisions" :key="index" :value="subdivision.value">{{subdivision.value}}</option>
-                    </select>
+                    <input type="text" name="Land Size" id="form_input" placeholder="What's the size of the farm?" v-model="yield_data.land_size"/>
                 </div>
                 <div id="form-element">
                     <label for="parish">Parish</label>
-                    <select id="form_input_select" class="select" name="parish">
+                    <select id="form_input_select" class="select" name="parish" v-model="yield_data.parish">
+                        <option disabled selected>What parish is the farmer from?</option>
                         <option v-for="(parish,index) in parishes" :key="index" :value="parish.value">{{parish.value}}</option>
                     </select>
+
                 </div>
                 <div id="form-element">
                     <label for="district">District</label>
-                    <select id="form_input_select" class="select" name="District">
+                    <select id="form_input_select" class="select" name="district" v-model="yield_data.district">
+                        <option disabled selected>What district is the farmer from?</option>
                         <option v-for="(district,index) in districts" :key="index" :value="district.value" id="option_con"><span>{{district.value}}</span></option>
                     </select>
                 </div>
@@ -45,28 +43,37 @@ export default {
     name:'Ycalculator',
     data(){
         return{
+            yield_data:{
+                crop:'Please select a crop.',
+                land_size:'',
+                parish:'What parish is the farmer from?', 
+                district:'What district is the farmer from?'
+
+            },
+            //select data//
             crops:[
                 {value:'Tomato'},
                 {value:'Lettuce'}
             ],
-            subdivisions:[
-                {value:'Pembrokehall'},
-                {value:'Saulisbury Plain'},
-                {value:'Somewhere'}
-            ],
             parishes:[
-                {value:"What parish is the farmer from?"},
                 {value:'Trelawny'},
                 {value:'St.James'}
             ],
             districts:[
-                {value:'What district is the farmer from?'},
                 {value:'Border'},
                 {value:'Mona'}
             ]
             
 
         }
+    },
+    methods:{
+        handle_Submit()
+        {
+            let data = JSON.stringify(this.yield_data)
+            console.log(data)
+        },
+
     }
 }
 </script>

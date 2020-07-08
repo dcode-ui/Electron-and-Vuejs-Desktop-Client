@@ -5,12 +5,13 @@
         </div>
         <div id="middle_con">
            <MainContent>
-               <div slot="heading">
-                   <p id="head_title">Crop Yields</p>
-                   <p id="head_descript">Here is a list of the crop yields processes by the calculator.</p>
+               <div slot="metrics_cards" id="metrics">
+                   <InfoCard :imagesrc="farmIcon" :cardcount="5.0" description="Farm Name"></InfoCard>
+                   <InfoCard :imagesrc="land" :cardcount="9" description="Farm Size"></InfoCard>
+                   <InfoCard :imagesrc="farmerIcon" :cardcount="2" description="Farmer"></InfoCard>
                </div>
                <div id="table" slot="table">
-                   <BigTable :headers="farm_table.headers" :tdata="farm_table.data" :addCrop="false" :searchB="true" ncheck="Crop_Yield"></BigTable>
+                   <BigTable :headers="farm_table.headers" :tdata="farm_table.data" :addCrop="true" :searchB="false" ncheck="Farm_View"></BigTable>
                </div>
            </MainContent>
 
@@ -26,18 +27,30 @@
 import Navbar from './Navbar'
 import MainContent from './MainContent'
 import Qpanel from './Qpanel'
+import InfoCard from './InfoCard'
 import BigTable from './BigTable'
 
+//Icons
+const farmer_icon = require('@/assets/Icons/dashboard/farmer.svg')
+const farm_icon = require('@/assets/Icons/dashboard/farm.svg')
+const crop_icon = require('@/assets/Icons/dashboard/crops.svg')
+const land = require('@/assets/Icons/land.svg');
+
 export default {
-    name:"Crop_Yield",
+    name:"Dasboard",
     components:{
         Navbar,
         MainContent,
         Qpanel,
+        InfoCard,
         BigTable
         },
     data(){
         return {
+            farmerIcon:farmer_icon,
+            farmIcon:farm_icon,
+            cropIcon:crop_icon,
+            land:land,
             farm_table:{
                 headers:['Crop','Crop Type','Cost(lbs)','YieldPMS','Revenue PMS','Created'],
                 data:[
@@ -65,6 +78,8 @@ export default {
 }
 </script>
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+
 #main_dash
 {
     position: absolute;
@@ -76,17 +91,44 @@ export default {
     left: 0px;
 }
 
+#left_con
+{
+    background-color: blue;
+}
 #middle_con
 {
     display:flex;
     flex-direction: column;
     align-items: center;
+    overflow-y: scroll;
 }
+#middle_con::-webkit-scrollbar
+{
+    width: 5px;
+    background-color: rgb(249,251,250);
+    border-radius: 5px;
+
+}
+
+#middle_con::-webkit-scrollbar-thumb
+{
+    background-color: rgb(224,224,224);
+    border-radius: 5px;
+}
+
+
 #main_content_con
 {
     position: relative;
     width: 90%;
     top:80px;
+}
+#metrics
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 #head_title
@@ -108,20 +150,5 @@ export default {
 {
     position: relative;
     margin-top: 15px;
-}
-#head_title
-{
-    font-family: 'Lato', sans-serif;
-    font-weight: bolder;
-    font-size:40px;
-    margin: 0px;
-}
-#head_descript
-{
-    margin: 0px;
-    font-family: 'Lato', sans-serif;
-    font-size: 25px;
-    color: rgb(212, 212, 212);
-    
 }
 </style>

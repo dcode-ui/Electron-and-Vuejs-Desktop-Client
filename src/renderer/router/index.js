@@ -18,12 +18,17 @@ export default new Router({
     {
       path: '/farms',
       name:'/farms',
-      redirect: '/'
+      component: require('@/components/Farms').default,
     },
     {
       path: '/cropyields',
       name:'/cropyields',
       component: require('@/components/Crop_Yield').default,
+    },
+    {
+      path: '/farmview',
+      name:'/farmview',
+      component: require('@/components/Farm_View').default,
     }
   ]
 })

@@ -46,4 +46,12 @@ export default {
     
 }
 
+#y_alert
+{
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-color: rgb(255, 222, 58);
+}
+
 </style>

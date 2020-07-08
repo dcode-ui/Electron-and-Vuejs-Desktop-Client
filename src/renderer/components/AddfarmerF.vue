@@ -1,34 +1,41 @@
 <template>
     <div>
         <div id="form-control">
-            <form>
+            <form @submit.prevent="handle_Submit" method="post">
                 <div id="form-element">
                     <label for="firstname">Firstname</label>
-                    <input type="text" name="firstname" id="form_input" placeholder="What's the farmer's firstname?"/>
+                    <input type="text" name="firstname" id="form_input" placeholder="What's the farmer's firstname?" v-model="farmer_data.firstname"/>
                 </div>
                 <div id="form-element">
                     <label for="lastname">Lastname</label>
-                    <input type="text" name="lastname" id="form_input" placeholder="What's the farmer's lastname?"/>
+                    <input type="text" name="lastname" id="form_input" placeholder="What's the farmer's lastname?" v-model="farmer_data.lastname"/>
+                </div>
+                <div id="form-element">
+                    <label for="trn">TRN</label>
+                    <input type="text" name="trn" id="form_input" placeholder="What's the farmer's TRN?" v-model="farmer_data.trn"/>
                 </div>
                 <div id="form-element">
                     <label for="gender">Gender</label>
-                    <select id="form_input_select" class="select" name="gender">
+                    <select id="form_input_select" class="select" name="gender" v-model="farmer_data.gender">
+                        <option disabled selected>What's the farmer's gender?</option>
                         <option v-for="(gender,index) in genders" :key="index" :value="gender.value">{{gender.value}}</option>
                     </select>
                 </div>
                 <div id="form-element">
                     <label for="mobile_number">Mobile Number</label>
-                    <input type="text" name="mobile_number" id="form_input" placeholder="What's the farmer's mobile number?"/>
+                    <input type="text" name="mobile_number" id="form_input" placeholder="What's the farmer's mobile number?" v-model="farmer_data.mobile_num"/>
                 </div>
                 <div id="form-element">
                     <label for="parish">Parish</label>
-                    <select id="form_input_select" class="select" name="parish">
+                    <select id="form_input_select" class="select" name="parish" v-model="farmer_data.parish">
+                        <option  disabled selected>What parish is the farmer from?</option>
                         <option v-for="(parish,index) in parishes" :key="index" :value="parish.value">{{parish.value}}</option>
                     </select>
                 </div>
                 <div id="form-element">
                     <label for="district">District</label>
-                    <select id="form_input_select" class="select" name="District">
+                    <select id="form_input_select" class="select" name="district" v-model="farmer_data.district">
+                        <option disabled selected>What district is the farmer from?</option>
                         <option v-for="(district,index) in districts" :key="index" :value="district.value" id="option_con"><span>{{district.value}}</span></option>
                     </select>
                 </div>
@@ -46,21 +53,47 @@ export default {
     name:'AddfarmerF',
     data(){
         return{
+            farmer_data:{
+                firstname:'',
+                lastname:'',
+                trn:'',
+                gender:"What's the farmer's gender?",
+                mobile_num:'',
+                parish:"What parish is the farmer from?",
+                district:"What district is the farmer from?"
+            },
+            //
             genders:[
-                {value:"What's the farmers gender"},
                 {value:'male'},
                 {value:'female'}
                 ],
             parishes:[
-                {value:"What parish is the farmer from?"},
                 {value:'Trelawny'},
                 {value:'St.James'}
             ],
             districts:[
-                {value:'What district is the farmer from?'},
                 {value:'Border'},
                 {value:'Mona'}
             ]
+        }
+    },
+    methods:
+    {
+        handle_Submit()
+        {
+            fetch('http://localhost:5000/api/add-farmer',{
+                method: 'POST',
+                body: JSON.stringify({firstname:"Nick",lastname:"Brown",trn:837486574,gender:"male",mobile_num:876932892,parish:"St.James",district:"Border"}),
+                headers: {
+                    'content-type': 'application/json'
+                }
+            }).then((resp)=>{
+                    resp.json().then((data)=>{
+                        console.log(data)
+                        })
+            }).catch((err)=>{
+                console.log(err)
+            })
         }
     }
     

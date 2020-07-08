@@ -1,32 +1,29 @@
 <template>
     <div>
         <div id="form-control">
-            <form>
+            <form @submit.prevent="handle_Submit">
                 <div id="form-element">
                     <label for="farm">Farm</label>
-                    <input type="text" name="farm" id="form_input" placeholder="What's the name of the farm?"/>
+                    <input type="text" name="farm" id="form_input" placeholder="What's the name of the farm?" v-model="farm_data.farm"/>
                 </div>
                 <div id="form-element">
                     <label for="farmer">Farmer</label>
-                    <select id="form_input_select" class="select" name="farmer">
-                        <option v-for="(farmer,index) in farmers" :key="index" :value="farmer.farmer_id">{{farmer.name}}</option>
-                    </select>
-                </div>
-                <div id="form-element">
-                    <label for="subdivision">Subdivision</label>
-                    <select id="form_input_select" class="select" name="subdivision">
-                        <option v-for="(subdivision,index) in subdivisions" :key="index" :value="subdivision.value">{{subdivision.value}}</option>
+                    <select id="form_input_select" class="select" name="farmer" v-model="farm_data.farmer_">
+                        <option disabled selected>Who's the owner of the farm.</option>
+                        <option v-for="(farmer,index) in farmers" :key="index" :value="farmer.farmer_id" ref="farmer_val">{{farmer.name}}</option>
                     </select>
                 </div>
                 <div id="form-element">
                     <label for="parish">Parish</label>
-                    <select id="form_input_select" class="select" name="parish">
+                    <select id="form_input_select" class="select" name="parish" v-model="farm_data.parish">
+                        <option disabled selected>What parish is the farmer from?</option>
                         <option v-for="(parish,index) in parishes" :key="index" :value="parish.value">{{parish.value}}</option>
                     </select>
                 </div>
                 <div id="form-element">
                     <label for="district">District</label>
-                    <select id="form_input_select" class="select" name="District">
+                    <select id="form_input_select" class="select" name="District" v-model="farm_data.district">
+                        <option disabled selected>What district is the farm located?</option>
                         <option v-for="(district,index) in districts" :key="index" :value="district.value" id="option_con"><span>{{district.value}}</span></option>
                     </select>
                 </div>
@@ -44,6 +41,14 @@ export default {
     name:'AddFarmF',
     data(){
         return{
+            farm_data:{
+                farm:"",
+                farmer_:"Who's the owner of the farm",
+                parish:'What parish is the farmer from?',
+                district:'What district is the farm located?'
+
+            },
+            //
             farmers:[
                 {name:'John Micheal', farmer_id:1},
                 {name:'Zenburk John', farmer_id:2}
@@ -54,16 +59,22 @@ export default {
                 {value:'Somewhere'}
             ],
             parishes:[
-                {value:"What parish is the farmer from?"},
                 {value:'Trelawny'},
                 {value:'St.James'}
             ],
             districts:[
-                {value:'What district is the farmer from?'},
                 {value:'Border'},
                 {value:'Mona'}
             ]
 
+        }
+    },
+    methods:
+    {
+        handle_Submit()
+        {
+            let data = JSON.stringify(this.farm_data)
+            console.log(data)
         }
     }
 }

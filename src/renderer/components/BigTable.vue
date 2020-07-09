@@ -1,26 +1,25 @@
 <template>
     <div id="big_table">
-        {{ncheck}}
         <div id="manipu_data">
             <div id="m_con">
                 <div id="button_con">
                     <div id="sort_con">
                         <button id="sort" name="sort" @click="toggle_Sort()">Sort</button>
                         <div id="sort_box" v-if="ncheck == 'Farmers'" >
-                            <button id="crop_sort" v-show="sort_visible" class="sort_button" name="crop_sort">Crop</button>
-                            <button id="date_sort" v-show="sort_visible" class="sort_button" name="date_sort">Date</button>
+                            <button id="crop_sort" v-show="sort_visible" class="sort_button" name="name_sort">Name</button>
+                            <button id="date_sort" v-show="sort_visible" class="sort_button" name="trn_sort">Trn</button>
                         </div>
                         <div id="sort_box" v-if="ncheck == 'Farms'" >
-                            <button id="crop_sort" v-show="sort_visible" class="sort_button" name="crop_sort">Crop</button>
-                            <button id="date_sort" v-show="sort_visible" class="sort_button" name="date_sort">Date</button>
+                            <button id="crop_sort" v-show="sort_visible" class="sort_button" name="farm_sort">Farm</button>
+                            <button id="date_sort" v-show="sort_visible" class="sort_button" name="farmer_sort">Farmer</button>
                         </div>
                         <div id="sort_box" v-if="ncheck == 'Crop_Yield'" >
                             <button id="crop_sort" v-show="sort_visible" class="sort_button" name="crop_sort">Crop</button>
-                            <button id="date_sort" v-show="sort_visible" class="sort_button" name="date_sort">Date</button>
+                            <button id="date_sort" v-show="sort_visible" class="sort_button" name="date_sort">Created</button>
                         </div>
                         <div id="sort_box" v-if="ncheck == 'Farm_View'" >
                             <button id="crop_sort" v-show="sort_visible" class="sort_button" name="crop_sort">Crop</button>
-                            <button id="date_sort" v-show="sort_visible" class="sort_button" name="date_sort">Date</button>
+                            <button id="date_sort" v-show="sort_visible" class="sort_button" name="date_sort">Created</button>
                         </div>
                     </div>
                     <button id="export" name="export">Export</button>
@@ -41,15 +40,17 @@
                 <div id="heading_name" v-for="(name, index) in headers" :key="index"> 
                     <p id="h_name">{{name}}</p>
                 </div>
-                <span id="spacer"></span>
+                <span id="spacer"><img :src="rightArrow" alt="" id="illus" v-if="ncheck == 'Farmers'"></span>
+                <span id="spacer"><img :src="rightArrow" alt="" id="illus" v-if="ncheck == 'Farms'"></span>
             </div>
             <div id="tbody">
                 <div id="tbody_con">
-                    <div id="t_row" v-for="(row, index) in tdata" :key="index">
+                    <div id="t_row" v-for="(row, index) in tbdata" :key="index">
                         <div id="t_column" v-for="(column, cindex) in row" :key="cindex">
                             <p>{{column}}</p>
                         </div>
-                        <span id="spacer"></span>
+                        <span id="spacer"><router-link to="/farmview/1"><img :src="rightArrow" alt="" v-if="ncheck == 'Farmers'"></router-link></span>
+                        <span id="spacer"><router-link to="/farmview/3"><img :src="rightArrow" alt="" v-if="ncheck == 'Farms'"></router-link></span>
                     </div>
                 </div>
 
@@ -60,6 +61,7 @@
 </template>
 
 <script>
+const arrowRightgreen = require('@/assets/Icons/arrowRightgreen.svg');
 export default {
     name:'BigTable',
     props:{
@@ -90,7 +92,8 @@ export default {
     data(){
         return{
             sort_visible:false,
-            crop_name:''
+            crop_name:'',
+            rightArrow:arrowRightgreen
             
         }
     
@@ -104,6 +107,14 @@ export default {
         toggle_Sort()
         {
             this.sort_visible = !this.sort_visible
+        }
+    },
+    computed:
+    {
+        tbdata()
+        {
+            let data = this.tdata
+            return data
         }
     }
 }
@@ -332,7 +343,7 @@ button
 {
     position: relative;
     height: 100%;
-    width: 20%;
+    width:20%;
     display: flex;
     align-items: center;
 }
@@ -342,5 +353,17 @@ button
     font-weight: lighter;
     font-family: 'Lato', sans-serif;
     margin: 0px;
+    padding-right: 5px;
+}
+
+#spacer
+{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+#spacer > #illus
+{
+    opacity: 0;
 }
 </style>

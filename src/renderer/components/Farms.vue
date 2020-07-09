@@ -39,7 +39,7 @@ export default {
     data(){
         return {
             farm_table:{
-                headers:['Farm','Farmer','Soil Type','Subdivision','Parish','District','Date'],
+                headers:['Farm','Farmer','Soil Type','Subdivision','Parish','District','Created'],
                 data:[
                     {
                         farm:'Rupps Hens',

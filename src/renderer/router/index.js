@@ -6,7 +6,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/dashboard',
       name: 'dashboard',
       component: require('@/components/Dashboard').default
     },
@@ -26,9 +26,14 @@ export default new Router({
       component: require('@/components/Crop_Yield').default,
     },
     {
-      path: '/farmview',
+      path: '/farmview/:fmid',
       name:'/farmview',
       component: require('@/components/Farm_View').default,
+    },
+    {
+      path: '/',
+      name:'/login',
+      component: require('@/components/Login').default,
     }
   ]
 })

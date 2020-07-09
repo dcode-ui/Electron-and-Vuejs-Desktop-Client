@@ -22,7 +22,7 @@ function createWindow () {
     titleBarStyle:'hidden',
     resizable:false,
     center:true,
-    height: 1100,
+    height: 1080,
     autoHideMenuBar:true,
     useContentSize: true,
     width: 1800

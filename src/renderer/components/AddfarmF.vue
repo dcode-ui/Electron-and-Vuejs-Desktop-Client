@@ -75,6 +75,34 @@ export default {
         {
             let data = JSON.stringify(this.farm_data)
             console.log(data)
+        },
+        handle_Submit()
+        {
+            const _farm=this.farm_data.farm
+            const _farmer=this.farm_data.farmer_
+            const _parish=this.farm_data.parish
+            const _district=this.farm_data.district
+            const _databody={
+                farm:_farm, 
+                farmer:_farmer,
+                parish:_parish,
+                district:_district
+                }
+            //console.log(_databody)
+            fetch('yield route',{
+                method: 'POST',
+                body: JSON.stringify(_databody),
+                headers: {
+                    'Authorization': 'Bearer '+localStorage.getItem('acctoken'),
+                    'content-type': 'application/json'
+                }
+            }).then((resp)=>{
+                    resp.json().then((data)=>{
+                        console.log(data)
+                        })
+            }).catch((err)=>{
+                console.log(err)
+            })
         }
     }
 }

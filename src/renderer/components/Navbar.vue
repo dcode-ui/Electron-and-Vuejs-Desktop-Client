@@ -7,7 +7,7 @@
             <div id="nav">
                 <div id="route_nav">
                     <div id="nav_con">
-                        <router-link to="/"><img src="@/assets/Icons/dashboard.svg" id="nav_icon" alt=""/><span id="o_route">Dashboard</span></router-link>
+                        <router-link to="/dashboard"><img src="@/assets/Icons/dashboard.svg" id="nav_icon" alt=""/><span id="o_route">Dashboard</span></router-link>
                     </div>
                 </div>
                 <div id="route_nav">
@@ -27,7 +27,7 @@
                 </div>
                 <div id="route_nav">
                     <div id="nav_con">
-                        <router-link to="/farmview"><img src="@/assets/Icons/crops.svg" id="nav_icon" alt=""/><span id="o_route">demo farm view</span></router-link>
+                        <router-link to="/"><img src="@/assets/Icons/crops.svg" id="nav_icon" alt=""/><span id="o_route">demo Login view</span></router-link>
                     </div>
                 </div>
             </div>

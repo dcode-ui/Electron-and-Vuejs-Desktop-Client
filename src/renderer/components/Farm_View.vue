@@ -37,7 +37,7 @@ const crop_icon = require('@/assets/Icons/dashboard/crops.svg')
 const land = require('@/assets/Icons/land.svg');
 
 export default {
-    name:"Dasboard",
+    name:"Farm_View",
     components:{
         Navbar,
         MainContent,
@@ -47,6 +47,7 @@ export default {
         },
     data(){
         return {
+            fmid:this.$route.params.fmid,
             farmerIcon:farmer_icon,
             farmIcon:farm_icon,
             cropIcon:crop_icon,
@@ -73,8 +74,11 @@ export default {
                 ]
             }
         }
+    },
+    created()
+    {
+        console.log(this.fmid)
     }
-
 }
 </script>
 <style scoped>

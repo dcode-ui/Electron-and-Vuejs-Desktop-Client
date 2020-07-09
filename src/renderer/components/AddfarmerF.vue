@@ -102,6 +102,7 @@ export default {
                 method: 'POST',
                 body: JSON.stringify(_databody),
                 headers: {
+                    'Authorization': 'Bearer '+localStorage.getItem('acctoken'),
                     'content-type': 'application/json'
                 }
             }).then((resp)=>{

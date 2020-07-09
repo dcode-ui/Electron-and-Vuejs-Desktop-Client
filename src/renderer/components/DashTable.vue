@@ -4,7 +4,7 @@
             <div id="t_title">
                 <p>{{title}}</p>
             </div>
-            <router-link :to="route_to">></router-link>
+            <router-link :to="route_to"><img :src="rightArrow" alt=""></router-link>
         </div>
         <div id="t_con">
             <div id="theading">
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+const arrowRight = require('@/assets/Icons/arrowRight.svg');
 export default {
     name:'DashTable',
     props:{
@@ -50,7 +51,7 @@ export default {
         },
     data(){
         return{
-
+            rightArrow:arrowRight
         }
     }
 }

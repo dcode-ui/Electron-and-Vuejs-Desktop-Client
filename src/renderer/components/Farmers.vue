@@ -39,11 +39,12 @@ export default {
     data(){
         return {
             farm_table:{
-                headers:['Name','Farm','Contact','Parish','District','Date'],
+                headers:['Name','Farm', 'Trn','Contact','Parish','District','Created'],
                 data:[
                     {
                         name:'Ruppert Baxton', 
                         farm:'Rupps Hens',
+                        trn:'38597864',
                         contact:'8763948587',
                         parish:'St.James',
                         district:'Gordon Village',
@@ -52,6 +53,16 @@ export default {
                     {
                         name:'Ruppert Baxton', 
                         farm:'Rupps Hens',
+                        trn:'83746572',
+                        contact:'8763948587',
+                        parish:'St.James',
+                        district:'Gordon Village',
+                        date:'6-19-20'
+                    },
+                    {
+                        name:'Ruppert Baxton', 
+                        farm:'Rupps Hens',
+                        trn:'83746572',
                         contact:'8763948587',
                         parish:'St.James',
                         district:'Gordon Village',

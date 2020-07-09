@@ -70,9 +70,32 @@ export default {
     methods:{
         handle_Submit()
         {
-            let data = JSON.stringify(this.yield_data)
-            console.log(data)
-        },
+            const _crop=this.yield_data.crop
+            const _land_size=this.yield_data.land_size
+            const _parish=this.yield_data.parish
+            const _district=this.yield_data.district
+            const _databody={
+                crop:_crop, 
+                land_size:_land_size,
+                parish:_parish,
+                district:_district
+                }
+            //console.log(_databody)
+            fetch('yield route',{
+                method: 'POST',
+                body: JSON.stringify(_databody),
+                headers: {
+                    'Authorization': 'Bearer '+localStorage.getItem('acctoken'),
+                    'content-type': 'application/json'
+                }
+            }).then((resp)=>{
+                    resp.json().then((data)=>{
+                        console.log(data)
+                        })
+            }).catch((err)=>{
+                console.log(err)
+            })
+        }
 
     }
 }
